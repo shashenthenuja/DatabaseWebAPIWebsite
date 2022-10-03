@@ -30,7 +30,6 @@ namespace BusinessLayer.Controllers
                 bd.Pin = (int)item.pin;
                 bd.Balance = item.balance;
                 bd.Image = item.image;
-                Console.WriteLine(">>>>>" + bd.AccNum);
                 RestRequest request = new RestRequest("api/bankdata/", Method.Post);
                 request.AddJsonBody(JsonConvert.SerializeObject(bd));
                 RestResponse response = access.restClient.Execute(request);

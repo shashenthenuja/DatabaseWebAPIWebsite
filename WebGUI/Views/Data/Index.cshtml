@@ -6,13 +6,14 @@
 <div id="studentForm">
     
     <form>
-      <img src="https://picsum.photos/id/193/200/" id="Image" alt="Profile" width="100" height="100" />
+      <img src="../images/profile.jpg" id="Image" alt="Profile" width="100" height="100" />
       <input type="text" id="Id" name="Id" placeholder="ID" />
       <input type="text" id="FName" name="FName" placeholder="First Name" />
       <input type="text" id="LName" name="LName" placeholder="Last Name" />
       <input type="number" id="AcctNo" name="AcctNo" placeholder="Account Number" />
       <input type="number" id="Pin" name="Pin" placeholder="Pin" />
       <input type="number" id="Balance" name="Balance" placeholder="Balance" />
+      <input type="file" id="theFile" />
     </form>
     <button id="search" onclick="search()">Search</button>
     <button id="insert" onclick="insert()">Insert</button>
@@ -47,8 +48,10 @@
         });
     }
 
-    function insert() 
+    function insert(file) 
     { 
+        var path = $("#theFile").val();
+	    var filename = path.replace(/C:\\fakepath\\/, '');
         $.ajax({
             type: 'POST',
             url: '/data/insert/',
@@ -60,7 +63,8 @@
                 "LastName": $("#LName").val(),
                 "AccNum": $("#AcctNo").val(),
                 "Pin": $("#Pin").val(),
-                "Balance": $("#Balance").val()
+                "Balance": $("#Balance").val(),
+                "Image": '../images/' + filename
             }),
             success: function(data, textStatus, jQxhr)
             {
