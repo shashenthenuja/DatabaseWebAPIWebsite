@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessLayer", "BusinessLa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankLib", "BankLib\BankLib.csproj", "{AE383862-1322-483F-BB75-59C5C0787E7E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebGUI", "WebGUI\WebGUI.csproj", "{C0972D21-5135-4B31-B35E-14BA4433DB54}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{AE383862-1322-483F-BB75-59C5C0787E7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AE383862-1322-483F-BB75-59C5C0787E7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AE383862-1322-483F-BB75-59C5C0787E7E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C0972D21-5135-4B31-B35E-14BA4433DB54}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C0972D21-5135-4B31-B35E-14BA4433DB54}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C0972D21-5135-4B31-B35E-14BA4433DB54}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C0972D21-5135-4B31-B35E-14BA4433DB54}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
