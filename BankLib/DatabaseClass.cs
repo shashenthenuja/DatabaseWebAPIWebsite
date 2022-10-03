@@ -49,7 +49,7 @@ namespace BankLib
         public void generateData()
         {
             Database data = new Database();
-            for (int i = 0; i < 100; i++)
+            for (int i = 0; i < 10; i++)
             {
                 DataStruct user = new DataStruct();
                 data.getNextAccount(out user.pin, out user.acctNo, out user.firstName, out user.lastName, out user.balance, out user.image);

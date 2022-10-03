@@ -47,13 +47,13 @@ namespace BusinessLayer.Controllers
             }
             if (count != 0)
             {
-                return Json(new { Status = "Success"});
+                return Json(new { Status = "Success" });
             }
             else
             {
-                return Json(new { Status = "Failed"});
+                return Json(new { Status = "Failed" });
             }
-            
+
         }
     }
 }

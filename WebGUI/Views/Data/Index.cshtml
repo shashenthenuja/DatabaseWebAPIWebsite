@@ -1,0 +1,149 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<div id="studentForm">
+    
+    <form>
+      <img src="https://picsum.photos/id/193/200/" id="Image" alt="Profile" width="100" height="100" />
+      <input type="text" id="Id" name="Id" placeholder="ID" />
+      <input type="text" id="FName" name="FName" placeholder="First Name" />
+      <input type="text" id="LName" name="LName" placeholder="Last Name" />
+      <input type="number" id="AcctNo" name="AcctNo" placeholder="Account Number" />
+      <input type="number" id="Pin" name="Pin" placeholder="Pin" />
+      <input type="number" id="Balance" name="Balance" placeholder="Balance" />
+    </form>
+    <button id="search" onclick="search()">Search</button>
+    <button id="insert" onclick="insert()">Insert</button>
+    <button id="update" onclick="update_data()">Update</button>
+    <button id="delete" onclick="delete_data()">Delete</button>
+    <button id="generate" onclick="generate_data()">Generate</button>
+</div>
+<script>
+    function search()
+    {
+        $.ajax({
+            url: '/data/search/'+ $('#Id').val(),
+            type: 'get',
+            contentType: 'application/json',
+            processData: false,
+            success: function (data, textStatus, jQxhr) 
+            {
+                var obj = JSON.parse(data);
+                $("#Id").val(obj.Id);
+                $("#FName").val(obj.FirstName);
+                $("#LName").val(obj.LastName);
+                $("#AcctNo").val(obj.AccNum);
+                $("#Pin").val(obj.Pin);
+                $("#Balance").val(obj.Balance);
+                $("#Image").attr("src", obj.Image);
+               
+            },
+            error: function (jqXhr, textStatus, errorThrown) 
+            {
+                console.log(errorThrown);
+            } 
+        });
+    }
+
+    function insert() 
+    { 
+        $.ajax({
+            type: 'POST',
+            url: '/data/insert/',
+            contentType: 'application/json',
+            data: JSON.stringify(
+            {
+                "Id": $('#Id').val(),
+                "FirstName": $("#FName").val(),
+                "LastName": $("#LName").val(),
+                "AccNum": $("#AcctNo").val(),
+                "Pin": $("#Pin").val(),
+                "Balance": $("#Balance").val()
+            }),
+            success: function(data, textStatus, jQxhr)
+            {
+                alert("Data Inserted");
+            },
+            error: function(xhr, textStatus, error)
+            {
+                alert("Error");
+                console.log(xhr.statusText);
+                console.log(textStatus);
+                console.log(error);
+            }
+        });
+    }
+
+    function update_data() 
+    { 
+        $.ajax({
+            type: 'POST',
+            url: '/data/update/'+ $('#Id').val(),
+            contentType: 'application/json',
+            data: JSON.stringify(
+            {
+                "Id": $('#Id').val(),
+                "FirstName": $("#FName").val(),
+                "LastName": $("#LName").val(),
+                "AccNum": $("#AcctNo").val(),
+                "Pin": $("#Pin").val(),
+                "Balance": $("#Balance").val(),
+                "Image": document.getElementById("Image").getAttribute('src')
+            }),
+            success: function(data, textStatus, jQxhr)
+            {
+                alert("Data Updated Successfully");
+            },
+            error: function(xhr, textStatus, error)
+            {
+                alert("Error");
+                console.log(xhr.statusText);
+                console.log(textStatus);
+                console.log(error);
+            }
+        });
+    }
+
+    function delete_data() 
+    { 
+        $.ajax({
+            type: 'DELETE',
+            url: '/data/delete/' + $('#Id').val(),
+            contentType: 'application/json',
+            success: function(data, textStatus, jQxhr)
+            {
+                alert("Data Deleted Successfully");
+            },
+            error: function(xhr, textStatus, error)
+            {
+                alert("Error");
+                console.log(xhr.statusText);
+                console.log(textStatus);
+                console.log(error);
+            }
+        });
+    }
+
+    function generate_data() 
+    { 
+        $.ajax({
+            type: 'POST',
+            url: '/data/generate/',
+            contentType: 'application/json',
+            success: function(data, textStatus, jQxhr)
+            {
+                alert("10 Records Generated");
+            },
+            error: function(xhr, textStatus, error)
+            {
+                alert("Error");
+                console.log(xhr.statusText);
+                console.log(textStatus);
+                console.log(error);
+            }
+        });
+    }
+
+</script>
